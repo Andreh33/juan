@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { MapPin, Phone, Mail } from 'lucide-react';
 import { Eyebrow } from '@/components/primitives/Eyebrow';
 import { SectionTitle } from '@/components/primitives/SectionTitle';
 import { ButtonLink } from '@/components/primitives/ButtonLink';
 import { RESTAURANT } from '@/lib/data/restaurant';
 import { MapPreview } from '@/components/encuentranos/MapPreview';
 import { CopyAddress } from '@/components/encuentranos/CopyAddress';
+import { HoursList } from '@/components/encuentranos/HoursList';
 
 export const metadata: Metadata = {
   title: 'Cómo llegar · Calle Pilar 5, A Cabana',
@@ -87,27 +88,7 @@ export default function EncuentranosPage() {
               </Link>
             </div>
 
-            <div id="horarios">
-              <h2 className="font-mono text-[11px] uppercase tracking-[0.24em] text-turquoise-200">
-                Horarios
-              </h2>
-              <ul className="mt-3 space-y-1.5 text-sm">
-                {RESTAURANT.hours.map((day) => (
-                  <li key={day.day} className="flex items-baseline justify-between gap-4">
-                    <span className="font-medium text-stone-100">{day.label}</span>
-                    <span className="font-mono tabular text-stone-300">
-                      {day.ranges.length === 0
-                        ? 'Cerrado'
-                        : day.ranges.map(([a, b]) => `${a}–${b}`).join(' · ')}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-4 flex items-center gap-2 text-xs text-stone-400">
-                <Clock className="h-3.5 w-3.5" />
-                Festivos pueden variar. Llámanos si dudas.
-              </p>
-            </div>
+            <HoursList />
           </div>
         </div>
       </section>

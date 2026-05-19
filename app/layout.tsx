@@ -9,6 +9,9 @@ import { Footer } from '@/components/nav/Footer';
 import { CustomCursor } from '@/components/interactive/CustomCursor';
 import { LenisProvider } from '@/components/interactive/LenisProvider';
 import { GrainOverlay } from '@/components/interactive/GrainOverlay';
+import { PolboEasterEgg } from '@/components/interactive/PolboEasterEgg';
+import { ScrollToTop } from '@/components/interactive/ScrollToTop';
+import { PageTransition } from '@/components/interactive/PageTransition';
 import { RestaurantSchema } from '@/components/seo/RestaurantSchema';
 
 const fraunces = Fraunces({
@@ -75,11 +78,14 @@ export default function RootLayout({
         <GrainOverlay />
         <LenisProvider>
           <CustomCursor />
+          <PageTransition />
           <Header />
           <main id="main" className="flex-1">
             {children}
           </main>
           <Footer />
+          <ScrollToTop />
+          <PolboEasterEgg />
         </LenisProvider>
         <Analytics />
         <SpeedInsights />
