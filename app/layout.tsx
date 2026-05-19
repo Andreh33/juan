@@ -12,6 +12,7 @@ import { GrainOverlay } from '@/components/interactive/GrainOverlay';
 import { PolboEasterEgg } from '@/components/interactive/PolboEasterEgg';
 import { ScrollToTop } from '@/components/interactive/ScrollToTop';
 import { PageTransition } from '@/components/interactive/PageTransition';
+import { InstallPrompt } from '@/components/interactive/InstallPrompt';
 import { RestaurantSchema } from '@/components/seo/RestaurantSchema';
 
 const fraunces = Fraunces({
@@ -86,6 +87,7 @@ export default function RootLayout({
           <Footer />
           <ScrollToTop />
           <PolboEasterEgg />
+          <InstallPrompt />
         </LenisProvider>
         <Analytics />
         <SpeedInsights />
