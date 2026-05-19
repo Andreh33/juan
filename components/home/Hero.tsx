@@ -129,6 +129,8 @@ export function Hero() {
             'Hamburguesa',
           ]}
         />
+        {/* —— viga inferior del hero como marco del local —— */}
+        <div aria-hidden className="divider-wood mt-4 h-1.5" />
       </div>
     </section>
   );

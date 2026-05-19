@@ -60,8 +60,10 @@ export function Bento() {
           <Link
             href="/reservas"
             data-cursor="grow"
-            className="group sheen relative flex flex-col gap-3 overflow-hidden rounded-[var(--radius-lg)] bg-gradient-to-br from-turquoise-700/40 via-turquoise-900/60 to-[color:var(--color-bg-base)] p-8 md:flex-row md:items-center md:justify-between md:p-10"
+            className="group sheen relative flex flex-col gap-3 overflow-hidden rounded-[var(--radius-lg)] border border-wood-600/30 bg-gradient-to-br from-turquoise-700/40 via-turquoise-900/60 to-[color:var(--color-bg-base)] p-8 md:flex-row md:items-center md:justify-between md:p-10"
           >
+            <span aria-hidden className="pointer-events-none absolute inset-0 texture-wood opacity-[0.10]" />
+            <span aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-wood-300/50 to-transparent" />
             <div>
               <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-turquoise-200">
                 · pasa la voz
@@ -192,21 +194,22 @@ function BentoCard({ title, description, kicker, icon, className }: CardProps) {
     <motion.div variants={fadeUp} className={className}>
       <div
         ref={sheenRef}
-        className="sheen group relative flex h-full flex-col justify-between overflow-hidden rounded-[var(--radius-lg)] border border-[color:var(--color-border-subtle)] bg-[color:var(--color-bg-base)] p-6 transition-colors hover:border-[color:var(--color-border-strong)] md:p-8"
+        className="card-wood sheen group relative flex h-full flex-col justify-between overflow-hidden rounded-[var(--radius-lg)] bg-[color:var(--color-bg-base)] p-6 transition-[border-color,box-shadow] hover:border-wood-300/40 md:p-8"
       >
+        <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-wood-300/40 to-transparent" />
         <div className="flex items-center justify-between text-stone-300">
-          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-turquoise-200/80">
+          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-wood-200/80">
             · {kicker}
           </span>
           {icon ? (
-            <span className="grid h-9 w-9 place-items-center rounded-full bg-turquoise-500/10 text-turquoise-300">
+            <span className="grid h-9 w-9 place-items-center rounded-full bg-wood-700/30 text-wood-100 ring-1 ring-wood-600/40">
               {icon}
             </span>
           ) : null}
         </div>
         <div className="mt-12">
           <h3 className="font-display text-[length:var(--fs-h3)] leading-tight">{title}</h3>
-          <p className="mt-3 max-w-md text-sm leading-relaxed text-stone-300 md:text-base">
+          <p className="mt-3 max-w-md text-sm leading-relaxed text-stone-200 md:text-base">
             {description}
           </p>
         </div>

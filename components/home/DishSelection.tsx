@@ -26,7 +26,16 @@ export function DishSelection() {
   );
 
   return (
-    <section className="py-[var(--section-y)]">
+    <section className="relative py-[var(--section-y)]">
+      {/* —— banda de piedra al fondo, casi imperceptible —— */}
+      <div aria-hidden className="absolute inset-x-0 top-0 -z-10 h-48">
+        <div className="texture-stone absolute inset-0 opacity-[0.06]" />
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-[color:var(--color-bg-deep)]" />
+      </div>
+      {/* —— viga de madera horizontal de marca —— */}
+      <div aria-hidden className="container-refugio mb-12">
+        <div className="divider-stone h-px" />
+      </div>
       <div className="container-refugio">
         <div className="flex flex-col gap-4">
           <Eyebrow>· la casa en seis platos</Eyebrow>

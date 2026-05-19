@@ -80,6 +80,17 @@ export function Storytelling() {
       className="relative bg-[color:var(--color-bg-hollow)]"
       style={{ height: `${STORIES.length * 90}vh` }}
     >
+      {/* —— textura de piedra de fondo —— */}
+      <div aria-hidden className="absolute inset-0 -z-10">
+        <div className="texture-stone absolute inset-0 opacity-[0.07]" />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(180deg, rgba(11,26,36,0.85) 0%, rgba(7,17,26,0.95) 100%)',
+          }}
+        />
+      </div>
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         {/* —— Número de paso gigante de fondo —— */}
         <div

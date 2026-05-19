@@ -1,17 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-
+/**
+ * Decisión de producto: ignoramos `prefers-reduced-motion` para mantener
+ * la estética cinematográfica del local. Se conserva la API para no romper
+ * los consumidores existentes.
+ */
 export function usePrefersReducedMotion(): boolean {
-  const [reduced, setReduced] = useState(false);
-
-  useEffect(() => {
-    const mql = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const update = () => setReduced(mql.matches);
-    update();
-    mql.addEventListener('change', update);
-    return () => mql.removeEventListener('change', update);
-  }, []);
-
-  return reduced;
+  return false;
 }
