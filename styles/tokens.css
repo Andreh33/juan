@@ -1,0 +1,125 @@
+/**
+ * Design tokens — El Refugio de A Cabana
+ * Modo oscuro nativo (no toggleable).
+ */
+
+:root {
+  /* —— Núcleos —— */
+  --color-bg-deep: #07111a;
+  --color-bg-base: #0b1a24;
+  --color-bg-raised: #112432;
+  --color-bg-hollow: #0a1620;
+
+  /* —— Turquesa marca (Atlántico) —— */
+  --color-turquoise-50: #e6faf7;
+  --color-turquoise-100: #bff1ea;
+  --color-turquoise-200: #8ae3d7;
+  --color-turquoise-300: #4ed1c2;
+  --color-turquoise-400: #1fbdab;
+  --color-turquoise-500: #0fa493;
+  --color-turquoise-600: #0a8478;
+  --color-turquoise-700: #086256;
+  --color-turquoise-800: #064a40;
+  --color-turquoise-900: #033029;
+
+  /* —— Piedra (granito gallego) —— */
+  --color-stone-100: #e9e5df;
+  --color-stone-200: #c9c2b7;
+  --color-stone-300: #9f968a;
+  --color-stone-400: #7a7165;
+  --color-stone-500: #5b5347;
+  --color-stone-600: #423b30;
+  --color-stone-700: #2d2820;
+  --color-stone-800: #1c1812;
+
+  /* —— Madera (roble templado) —— */
+  --color-wood-100: #e4d3b8;
+  --color-wood-200: #c8aa82;
+  --color-wood-300: #a8854f;
+  --color-wood-400: #8a6730;
+  --color-wood-500: #6e4f1f;
+  --color-wood-600: #523913;
+  --color-wood-700: #3a270c;
+
+  /* —— Brasa —— */
+  --color-ember-500: #d9582a;
+  --color-ember-600: #b43f18;
+
+  /* —— Texto —— */
+  --color-text-primary: #f1eee6;
+  --color-text-secondary: #bdb6a6;
+  --color-text-muted: #8a8474;
+  --color-text-on-turq: #04231f;
+
+  /* —— Bordes —— */
+  --color-border-subtle: rgba(241, 238, 230, 0.06);
+  --color-border-default: rgba(241, 238, 230, 0.1);
+  --color-border-strong: rgba(241, 238, 230, 0.18);
+
+  /* —— Sombras —— */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35), 0 2px 6px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.45), 0 8px 16px rgba(0, 0, 0, 0.3);
+  --shadow-glow-turq: 0 0 40px rgba(15, 164, 147, 0.35);
+
+  /* —— Radios —— */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-xl: 32px;
+  --radius-full: 9999px;
+
+  /* —— Tipografía —— */
+  --font-display: var(--font-fraunces), 'Tinos', Georgia, serif;
+  --font-sans: var(--font-inter), 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* —— Easings —— */
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
+
+  /* —— Duraciones —— */
+  --dur-fast: 180ms;
+  --dur-mid: 320ms;
+  --dur-slow: 620ms;
+  --dur-cinema: 1100ms;
+
+  /* —— Layout —— */
+  --container-max: 1320px;
+  --gutter: clamp(20px, 4vw, 48px);
+  --section-y: clamp(72px, 11vw, 160px);
+
+  /* —— Escala tipográfica fluida —— */
+  --fs-display-2xl: clamp(3.25rem, 7.5vw, 7.5rem);
+  --fs-display-xl: clamp(2.5rem, 5.5vw, 5rem);
+  --fs-display-lg: clamp(2rem, 4vw, 3.5rem);
+  --fs-h2: clamp(1.75rem, 3vw, 2.5rem);
+  --fs-h3: clamp(1.25rem, 2vw, 1.6rem);
+  --fs-body-lg: clamp(1.05rem, 1.15vw, 1.2rem);
+  --fs-body: 1rem;
+  --fs-body-sm: 0.875rem;
+  --fs-micro: 0.75rem;
+
+  /* —— Z-index escala —— */
+  --z-base: 0;
+  --z-raised: 1;
+  --z-sticky: 5;
+  --z-overlay: 10;
+  --z-drawer: 40;
+  --z-modal: 50;
+  --z-toast: 80;
+  --z-cursor: 9999;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
