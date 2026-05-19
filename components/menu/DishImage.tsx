@@ -1,29 +1,30 @@
-import { placeholderDataUri } from '@/lib/utils/placeholders';
+import Image from 'next/image';
+import { placeholderBlurDataUri } from '@/lib/utils/placeholders';
 import { cn } from '@/lib/utils/cn';
 
 interface Props {
-  id: string;
-  hue: string;
+  src: string;
   alt: string;
-  className?: string;
+  hue: string;
+  sizes?: string;
   priority?: boolean;
+  className?: string;
 }
 
-/**
- * Imagen de plato — placeholder SVG artístico generado por hash del id.
- * Cliente: sustituir por <Image src=... /> con foto real cuando esté disponible.
- */
-export function DishImage({ id, hue, alt, className }: Props) {
-  const src = placeholderDataUri(id, hue);
+export function DishImage({ src, alt, hue, sizes, priority, className }: Props) {
   return (
-    <picture className={cn('block h-full w-full', className)}>
-      <img
-        src={src}
-        alt={alt}
-        loading="lazy"
-        decoding="async"
-        className="h-full w-full object-cover transition-transform duration-700 ease-[var(--ease-out-quart)] group-hover:scale-[1.06]"
-      />
-    </picture>
+    <Image
+      src={src}
+      alt={alt}
+      fill
+      sizes={sizes ?? '(max-width: 768px) 90vw, (max-width: 1280px) 45vw, 30vw'}
+      priority={priority}
+      placeholder="blur"
+      blurDataURL={placeholderBlurDataUri(hue)}
+      className={cn(
+        'object-cover transition-transform duration-700 ease-[var(--ease-out-quart)] group-hover:scale-[1.06]',
+        className,
+      )}
+    />
   );
 }

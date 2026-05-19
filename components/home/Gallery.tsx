@@ -1,23 +1,32 @@
 'use client';
 
+import Image from 'next/image';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X } from 'lucide-react';
 import { Eyebrow } from '@/components/primitives/Eyebrow';
 import { SectionTitle } from '@/components/primitives/SectionTitle';
-import { placeholderDataUri } from '@/lib/utils/placeholders';
+import { placeholderBlurDataUri } from '@/lib/utils/placeholders';
 
-const GALLERY = [
-  { id: 'g1', alt: 'Comedor en luz dorada', hue: '#A8854F', span: 'row-span-2' },
-  { id: 'g2', alt: 'Pulpo emplatado', hue: '#0FA493', span: '' },
-  { id: 'g3', alt: 'Detalle de mantel', hue: '#5B5347', span: '' },
-  { id: 'g4', alt: 'Cocina al servicio', hue: '#D9582A', span: 'row-span-2' },
-  { id: 'g5', alt: 'Mesa con copa', hue: '#0A8478', span: '' },
-  { id: 'g6', alt: 'Pan crujiente', hue: '#C8AA82', span: '' },
-  { id: 'g7', alt: 'Brasa al fondo', hue: '#B43F18', span: '' },
-  { id: 'g8', alt: 'Helado en plato', hue: '#BFF1EA', span: 'row-span-2' },
-  { id: 'g9', alt: 'Tortilla recién hecha', hue: '#8A6730', span: '' },
-] as const;
+interface GalleryItem {
+  id: string;
+  src: string;
+  alt: string;
+  hue: string;
+  span?: string;
+}
+
+const GALLERY: ReadonlyArray<GalleryItem> = [
+  { id: 'g04', src: '/images/gallery/g04.jpg', alt: 'Terraza al atardecer con vistas a la ría', hue: '#A8854F', span: 'row-span-2' },
+  { id: 'g06', src: '/images/gallery/g06.jpg', alt: 'Cuenco con marisco, arroz y caldo de pimentón', hue: '#0FA493' },
+  { id: 'g03', src: '/images/gallery/g03.jpg', alt: 'Comedor interior con mesas y luz cálida', hue: '#5B5347' },
+  { id: 'g01', src: '/images/gallery/g01.jpg', alt: 'Hamburguesa con patatas sobre tabla, fondo oscuro', hue: '#523913', span: 'row-span-2' },
+  { id: 'g08', src: '/images/gallery/g08.jpg', alt: 'Pescado a la plancha con tartar de verduras', hue: '#0A8478' },
+  { id: 'g02', src: '/images/gallery/g02.jpg', alt: 'Cuenco de ensalada con verduras frescas y huevo', hue: '#C8AA82' },
+  { id: 'g05', src: '/images/gallery/g05.jpg', alt: 'Cocinero emplata con detalle sobre plato blanco', hue: '#B43F18' },
+  { id: 'g07', src: '/images/gallery/g07.jpg', alt: 'Mesa servida con copa de vino y plato emplatado', hue: '#BFF1EA', span: 'row-span-2' },
+  { id: 'g09', src: '/images/gallery/g09.jpg', alt: 'Comensales disfrutando del menú en la mesa', hue: '#8A6730' },
+];
 
 export function Gallery() {
   const [active, setActive] = useState<string | null>(null);
@@ -41,16 +50,17 @@ export function Gallery() {
               type="button"
               onClick={() => setActive(item.id)}
               data-cursor="grow"
-              className={`group relative overflow-hidden rounded-[var(--radius-md)] border border-[color:var(--color-border-subtle)] transition-[border-color] hover:border-[color:var(--color-border-strong)] ${item.span}`}
+              className={`group relative overflow-hidden rounded-[var(--radius-md)] border border-[color:var(--color-border-subtle)] transition-[border-color] hover:border-[color:var(--color-border-strong)] ${item.span ?? ''}`}
               aria-label={`Abrir imagen: ${item.alt}`}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element -- placeholder SVG inline; sustituir por <Image /> al disponer de fotos reales */}
-              <img
-                src={placeholderDataUri(item.id, item.hue)}
+              <Image
+                src={item.src}
                 alt={item.alt}
-                loading="lazy"
-                decoding="async"
-                className="h-full w-full object-cover transition-transform duration-700 ease-[var(--ease-out-quart)] group-hover:scale-[1.06]"
+                fill
+                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                placeholder="blur"
+                blurDataURL={placeholderBlurDataUri(item.hue)}
+                className="object-cover transition-transform duration-700 ease-[var(--ease-out-quart)] group-hover:scale-[1.06]"
               />
             </button>
           ))}
@@ -67,7 +77,7 @@ export function Gallery() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-[var(--z-modal)] flex items-center justify-center bg-[color:var(--color-bg-deep)]/85 backdrop-blur-2xl p-6"
+            className="fixed inset-0 z-[var(--z-modal)] flex items-center justify-center bg-[color:var(--color-bg-deep)]/85 p-6 backdrop-blur-2xl"
             onClick={() => setActive(null)}
           >
             <motion.button
@@ -79,16 +89,22 @@ export function Gallery() {
             >
               <X className="h-5 w-5" />
             </motion.button>
-            <motion.img
+            <motion.div
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
               transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              src={placeholderDataUri(activeItem.id, activeItem.hue)}
-              alt={activeItem.alt}
-              className="max-h-[80vh] max-w-[1200px] rounded-[var(--radius-lg)] object-contain shadow-[var(--shadow-lg)]"
+              className="relative h-[80vh] w-full max-w-[1200px]"
               onClick={(e) => e.stopPropagation()}
-            />
+            >
+              <Image
+                src={activeItem.src}
+                alt={activeItem.alt}
+                fill
+                sizes="100vw"
+                className="rounded-[var(--radius-lg)] object-contain shadow-[var(--shadow-lg)]"
+              />
+            </motion.div>
           </motion.div>
         ) : null}
       </AnimatePresence>

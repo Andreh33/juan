@@ -64,7 +64,7 @@ export function DishModal({ dish, onClose }: Props) {
             </button>
 
             <motion.div layoutId={`dish-image-${dish.id}`} className="relative aspect-[4/5] md:aspect-auto">
-              <DishImage id={dish.id} hue={dish.hue} alt={dish.name} />
+              <DishImage src={dish.image} alt={dish.alt} hue={dish.hue} sizes="(max-width: 768px) 100vw, 60vw" />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[color:var(--color-bg-base)]/40 via-transparent to-transparent md:bg-gradient-to-r" />
             </motion.div>
 

@@ -37,8 +37,12 @@ export interface Dish {
   tags: ReadonlyArray<DishTag>;
   allergens: ReadonlyArray<Allergen>;
   pairing?: string;
-  /** Color base para placeholder SVG (hex). */
+  /** Color base para fallback / blur (hex). */
   hue: string;
+  /** Foto del plato (relativa a /public). */
+  image: string;
+  /** alt text accesible. */
+  alt: string;
 }
 
 export const CATEGORIES: ReadonlyArray<{ id: DishCategory; label: string }> = [
@@ -82,6 +86,8 @@ export const MENU: ReadonlyArray<Dish> = [
     allergens: ['molusco'],
     pairing: 'Tinto del país, joven y fresco.',
     hue: '#A8854F',
+    image: '/images/dishes/pulpo-a-la-gallega.jpg',
+    alt: 'Plato hondo con marisco, arroz y caldo de pimentón sobre madera rústica',
   },
   {
     id: 'raxo-al-queso',
@@ -94,6 +100,8 @@ export const MENU: ReadonlyArray<Dish> = [
     allergens: ['lacteo'],
     pairing: 'Albariño con cuerpo o Mencía joven.',
     hue: '#D9582A',
+    image: '/images/dishes/raxo-al-queso.jpg',
+    alt: 'Carne de cerdo lacada brillante sobre tabla, con tomates y pepinillo al lado',
   },
   {
     id: 'zorza',
@@ -105,6 +113,8 @@ export const MENU: ReadonlyArray<Dish> = [
     allergens: [],
     pairing: 'Tinto joven de la Ribeira Sacra.',
     hue: '#B43F18',
+    image: '/images/dishes/zorza.jpg',
+    alt: 'Guiso anaranjado de la casa con hierbas frescas y limón',
   },
   {
     id: 'ensalada-campera',
@@ -116,6 +126,8 @@ export const MENU: ReadonlyArray<Dish> = [
     tags: ['compartir', 'sin-gluten'],
     allergens: ['huevo', 'pescado'],
     hue: '#4ED1C2',
+    image: '/images/dishes/ensalada-campera.jpg',
+    alt: 'Cuenco con ensalada de patata, huevo, tomate, maíz y verduras frescas',
   },
   {
     id: 'tortilla-de-patata',
@@ -126,6 +138,8 @@ export const MENU: ReadonlyArray<Dish> = [
     tags: ['recomendado', 'compartir'],
     allergens: ['huevo'],
     hue: '#C8AA82',
+    image: '/images/dishes/tortilla-de-patata.jpg',
+    alt: 'Plato blanco con porción dorada de tortilla, pan al lado y copa de vino',
   },
   {
     id: 'pinchos-variados',
@@ -136,6 +150,8 @@ export const MENU: ReadonlyArray<Dish> = [
     tags: ['temporada'],
     allergens: ['gluten'],
     hue: '#8A6730',
+    image: '/images/dishes/pinchos-variados.jpg',
+    alt: 'Pinchos calientes sobre tabla con guarnición casera',
   },
   {
     id: 'bocadillos-calientes',
@@ -146,6 +162,8 @@ export const MENU: ReadonlyArray<Dish> = [
     tags: [],
     allergens: ['gluten'],
     hue: '#6E4F1F',
+    image: '/images/dishes/bocadillos-calientes.jpg',
+    alt: 'Bocadillo tostado a la plancha con relleno fundido y salsas para mojar',
   },
   {
     id: 'mariscos-temporada',
@@ -157,6 +175,8 @@ export const MENU: ReadonlyArray<Dish> = [
     allergens: ['crustaceo', 'molusco'],
     pairing: 'Albariño Rías Baixas.',
     hue: '#1FBDAB',
+    image: '/images/dishes/mariscos-temporada.jpg',
+    alt: 'Pieza de pescado a la plancha con tartar de verduras sobre cama de espinacas',
   },
   {
     id: 'combinado-clasico',
@@ -168,6 +188,8 @@ export const MENU: ReadonlyArray<Dish> = [
     tags: ['recomendado'],
     allergens: ['gluten', 'huevo'],
     hue: '#E4D3B8',
+    image: '/images/dishes/combinado-clasico.jpg',
+    alt: 'Tostada con huevo frito perfectamente cuajado, yema brillante, pimienta y especias',
   },
   {
     id: 'hamburguesa-casa',
@@ -178,6 +200,8 @@ export const MENU: ReadonlyArray<Dish> = [
     tags: [],
     allergens: ['gluten', 'lacteo', 'huevo'],
     hue: '#523913',
+    image: '/images/dishes/hamburguesa-casa.jpg',
+    alt: 'Hamburguesa con patatas fritas sobre tabla de madera, fondo oscuro',
   },
   {
     id: 'helados-artesanos',
@@ -188,6 +212,8 @@ export const MENU: ReadonlyArray<Dish> = [
     tags: [],
     allergens: ['lacteo'],
     hue: '#BFF1EA',
+    image: '/images/dishes/helados-artesanos.jpg',
+    alt: 'Polos artesanos de fruta del bosque apilados con frambuesas frescas',
   },
 ] as const;
 

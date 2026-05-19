@@ -29,7 +29,7 @@ export function DishCard({ dish, onOpen }: Props) {
     >
       <div ref={sheenRef} className="sheen relative aspect-[4/5] overflow-hidden">
         <motion.div layoutId={`dish-image-${dish.id}`} className="absolute inset-0">
-          <DishImage id={dish.id} hue={dish.hue} alt={dish.name} />
+          <DishImage src={dish.image} alt={dish.alt} hue={dish.hue} />
         </motion.div>
         <div className="absolute right-3 top-3 z-10 flex flex-wrap justify-end gap-1.5">
           {dish.tags.map((t) => (

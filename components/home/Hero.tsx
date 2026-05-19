@@ -1,11 +1,11 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'motion/react';
 import { ArrowRight, Phone } from 'lucide-react';
 import { ButtonLink } from '@/components/primitives/ButtonLink';
 import { Eyebrow } from '@/components/primitives/Eyebrow';
 import { Marquee } from '@/components/composed/Marquee';
-import { PlateOrnament } from '@/components/interactive/PlateOrnament';
 import { RESTAURANT } from '@/lib/data/restaurant';
 
 const HERO_TEXT = 'Refugio';
@@ -13,22 +13,30 @@ const HERO_TEXT = 'Refugio';
 export function Hero() {
   return (
     <section className="relative isolate flex min-h-[100svh] flex-col overflow-hidden">
-      {/* Background atmospheric layers */}
+      {/* —— Capa 1: foto real del comedor —— */}
+      <div aria-hidden className="absolute inset-0 -z-20">
+        <Image
+          src="/images/hero/dining-warm.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          quality={85}
+          className="object-cover object-center"
+        />
+      </div>
+
+      {/* —— Capa 2: duotone azul-cálido + dimming —— */}
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,rgba(15,164,147,0.18),transparent_60%)]"
-      />
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_bottom,rgba(168,133,79,0.18),transparent_55%)]"
-      />
-      <div
-        aria-hidden
-        className="absolute inset-x-0 bottom-0 -z-10 h-[60vh] bg-gradient-to-t from-[color:var(--color-bg-deep)] via-[color:var(--color-bg-deep)]/85 to-transparent"
+        className="absolute inset-0 -z-10"
+        style={{
+          background:
+            'linear-gradient(180deg, rgba(7,17,26,0.55) 0%, rgba(7,17,26,0.78) 50%, rgba(7,17,26,0.96) 100%), radial-gradient(ellipse at top right, rgba(15,164,147,0.30), transparent 55%), radial-gradient(ellipse at bottom left, rgba(168,133,79,0.22), transparent 60%)',
+        }}
       />
 
-      <PlateOrnament />
-
+      {/* —— Contenido —— */}
       <div className="container-refugio relative z-10 flex flex-1 flex-col justify-center pt-32 pb-24">
         <div className="max-w-3xl">
           <motion.div
@@ -52,7 +60,7 @@ export function Hero() {
             </span>
             <span className="mt-3 block overflow-hidden">
               <motion.span
-                className="inline-block text-[length:var(--fs-display-lg)] italic font-light text-stone-200"
+                className="inline-block text-[length:var(--fs-display-lg)] italic font-light text-stone-100"
                 initial={{ y: '110%' }}
                 animate={{ y: '0%' }}
                 transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
@@ -66,7 +74,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.75 }}
-            className="mt-8 max-w-xl text-[length:var(--fs-body-lg)] leading-relaxed text-stone-200"
+            className="mt-8 max-w-xl text-[length:var(--fs-body-lg)] leading-relaxed text-stone-100/90"
           >
             Cocina gallega de barrio en A Cabana, Ferrol. Pulpo, raxo, tortilla y el calor de toda la vida.
           </motion.p>
@@ -91,13 +99,13 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* Scroll indicator */}
+        {/* —— Scroll indicator —— */}
         <motion.div
           aria-hidden
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5, duration: 1 }}
-          className="absolute bottom-12 right-[var(--gutter)] flex flex-col items-center gap-3 text-xs uppercase tracking-[0.32em] text-stone-400"
+          className="absolute bottom-12 right-[var(--gutter)] flex flex-col items-center gap-3 text-xs uppercase tracking-[0.32em] text-stone-300"
         >
           <span className="rotate-90 origin-center [writing-mode:vertical-rl]">scroll</span>
           <motion.span

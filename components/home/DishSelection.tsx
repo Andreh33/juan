@@ -59,7 +59,7 @@ export function DishSelection() {
                 data-cursor="grow"
               >
                 <div className="relative aspect-[4/5] overflow-hidden">
-                  <DishImage id={dish.id} hue={dish.hue} alt={dish.name} />
+                  <DishImage src={dish.image} alt={dish.alt} hue={dish.hue} sizes="(max-width: 768px) 80vw, 26rem" />
                   <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[color:var(--color-bg-deep)]/90 via-transparent to-transparent" />
                   {dish.tags.includes('recomendado') ? (
                     <div className="absolute right-3 top-3">
